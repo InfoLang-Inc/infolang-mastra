@@ -1,0 +1,70 @@
+{
+  "name": "@infolang/mastra",
+  "version": "0.1.0",
+  "description": "InfoLang memory tools for Mastra agents (recall, memorize, forget) built on @mastra/core createTool.",
+  "license": "Apache-2.0",
+  "author": "InfoLang <engineering@infolang.ai>",
+  "homepage": "https://infolang.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InfoLang-Inc/infolang-mastra.git"
+  },
+  "bugs": {
+    "url": "https://github.com/InfoLang-Inc/infolang-mastra/issues"
+  },
+  "keywords": [
+    "infolang",
+    "mastra",
+    "semantic-memory",
+    "agent-memory",
+    "rag",
+    "llm",
+    "tools"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@infolang/sdk": "^0.2.0"
+  },
+  "peerDependencies": {
+    "@mastra/core": ">=0.10.0 <2.0.0",
+    "zod": "^3.25.0 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@mastra/core": "^1.50.1",
+    "@types/node": "^22.0.0",
+    "eslint": "^9.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "vitest": "^2.1.0",
+    "zod": "^3.25.76"
+  }
+}
