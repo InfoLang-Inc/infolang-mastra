@@ -6,17 +6,28 @@ three `createTool`-based tools — `infolang-recall`, `infolang-memorize`,
 `infolang-forget` — with configurable per-agent / per-thread / per-resource
 namespace scoping.
 
-> Repository: `infolang-mastra`. Package: `@infolang/mastra` (npm).
-
 ## Install
 
+`@infolang/mastra` isn't published to npm yet. Install it from GitHub until
+it is:
+
 ```bash
-npm install @infolang/mastra @mastra/core zod
+git clone https://github.com/InfoLang-Inc/infolang-mastra.git
+cd infolang-mastra
+npm install
+npm run build
+```
+
+Then point your project at the built package — either `npm link` it, or add
+a `file:` dependency pointing at the clone:
+
+```bash
+npm install @mastra/core zod
+npm install file:../infolang-mastra   # path to your clone
 ```
 
 `@mastra/core` and `zod` are peer dependencies — install whatever versions
-your Mastra project already uses. `@infolang/sdk` is a regular dependency
-and installs automatically.
+your Mastra project already uses.
 
 ## Quickstart
 
@@ -121,7 +132,7 @@ Resolution order for a single tool call, most to least specific:
 ## Honest semantics notes
 
 - **`weak` is not an error.** `infolang-recall` always returns its best
-  matches; `weak: true` just means the top score is below InfoLang's 0.85
+  matches; `weak: true` means the top score is below InfoLang's 0.85
   confidence floor. The tool does not filter these out or retry — the
   agent's instructions need to tell the model what to do with a weak match
   (the example does this).
@@ -143,7 +154,7 @@ Resolution order for a single tool call, most to least specific:
 - **Namespace scoping is best-effort.** As noted above, `"thread"` /
   `"resource"` scoping depends on your agent actually populating those ids.
   This package does not verify that your agent is configured to do so; it
-  just reads what's on the tool context and falls back silently when it's
+  reads what's on the tool context and falls back silently when it's
   absent.
 
 ## Development

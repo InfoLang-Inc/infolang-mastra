@@ -11,7 +11,12 @@ for memory instead of (or alongside) Mastra's own conversation memory.
 
 ## Run it
 
+`@infolang/mastra` isn't on npm yet, so build it locally and link it before
+installing this example's other dependencies:
+
 ```bash
+(cd ../.. && npm install && npm run build && npm link)
+npm link @infolang/mastra
 npm install
 cp .env.example .env   # fill in OPENAI_API_KEY and INFOLANG_API_KEY
 npm start
